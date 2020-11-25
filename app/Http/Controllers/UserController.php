@@ -18,7 +18,7 @@ class UserController extends Controller
     	if($request->hasFile('avatar'))
     	{
     		$avatar = $request->file('avatar');
-            $avatar = rand() . '.' . $image->getClientOriginalExtension();
+            $avatar = rand() . '.' . $avatar->getClientOriginalExtension();
 
             $image->move(public_path('images'), $avatar)->resize(300,300);
     		// $fileName = time().'.'. $avatar->getClientOriginalExtension();
