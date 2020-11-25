@@ -18,8 +18,11 @@ class UserController extends Controller
     	if($request->hasFile('avatar'))
     	{
     		$avatar = $request->file('avatar');
-    		$fileName = time().'.'. $avatar->getClientOriginalExtension();
-    		$avatar->move(public_path('images'), $fileName);
+            $avatar = rand() . '.' . $image->getClientOriginalExtension();
+
+            $image->move(public_path('images'), $avatar)->resize(300,300);
+    		// $fileName = time().'.'. $avatar->getClientOriginalExtension();
+    		// Image::make($request->file('avatar'))->resize(300,300)->save(public_path('/uploads/avatars/'. $fileName));
     		$user = Auth::user();
     		$user->avatar = $fileName;
     		$user->save();
