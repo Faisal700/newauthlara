@@ -20,6 +20,9 @@ Route::get('ajax-crud/edit/{id}', 'AjaxCrudController@edit')->middleware('auth')
 Route::get('ajax-crud/destroy/{id}', 'AjaxCrudController@destroy')->middleware('auth');
 // Route::get('/employee','EmpolyeeController@index')->name('addnow');
 // Route::post('/employee','EmpolyeeController@store');
+Route::get('laraauth',function(){
+   return "Hello users";
+});
 Route::resource('employee','EmpolyeeController');
 // one to many
 Route::resource('customers','CustomersController');
