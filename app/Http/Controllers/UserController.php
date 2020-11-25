@@ -19,7 +19,7 @@ class UserController extends Controller
     	{
     		$avatar = $request->file('avatar');
     		$fileName = time().'.'. $avatar->getClientOriginalExtension();
-    		Image::make($request->file('avatar'))->resize(300,300)->save($fileName);
+    		$avatar->move(public_path('images'), $fileName);
     		$user = Auth::user();
     		$user->avatar = $fileName;
     		$user->save();
